@@ -2,13 +2,17 @@
 Name: smartHeight
 Author: inlanger www.inlanger.org.ua
 Description: Make similar height of all selected elements
-Usage: $(YOUR_SELECTOR).smartHeight();
+Usage: $(YOUR_SELECTOR).smartHeight({change: "css_property_name"});
 Requirements: jQuery 1.5+
 Browser support: IE 7+, Chrome 2+, FireFox 2+, Opera 9+, Safari 4+
 */
 
 (function($) {
     $.fn.smartHeight = function(options) {
+        var defaults = {
+            change: 'min-height'
+        }, opts = $.extend(defaults, options);
+
         function find_highest(element) {
             var t = 0;
             var t_elem;
@@ -23,7 +27,7 @@ Browser support: IE 7+, Chrome 2+, FireFox 2+, Opera 9+, Safari 4+
         }
         max_high = find_highest(this);
         $(this).each(function() {
-            $(this).css("min-height", max_high);
+            $(this).css(opts['change'], max_high);
         });
     };
 })(jQuery);
