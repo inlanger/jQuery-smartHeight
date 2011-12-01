@@ -14,16 +14,16 @@ Browser support: IE 7+, Chrome 2+, FireFox 2+, Opera 9+, Safari 4+
         }, opts = $.extend(defaults, options);
 
         function find_highest(element) {
-            var t = 0;
+            var value = 0;
             var t_elem;
             $(element).each(function() {
                 $this = $(this);
-                if ($this.outerHeight() > t) {
+                if ($this.outerHeight() > value) {
                     t_elem = this;
-                    t = $this.outerHeight();
+                    value = $this.outerHeight();
                 }
             });
-            return t;
+            return value;
         }
         max_high = find_highest(this);
         $(this).each(function() {
